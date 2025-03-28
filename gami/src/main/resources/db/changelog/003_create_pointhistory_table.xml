@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="003-create-pointhistory-table" author="yourname">
+        <createTable tableName="point_history">
+            <column name="history_id" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="action" type="VARCHAR(50)" />
+            <column name="point_change" type="INT" />
+            <column name="action_date" type="DATE" />
+            <column name="user_id" type="VARCHAR(255)">
+                <constraints nullable="false" foreignKeyName="fk_pointHistory_user"
+                             references="users(user_id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
